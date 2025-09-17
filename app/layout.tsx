@@ -9,7 +9,10 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: "Luxury AI Chatbot",
   description: "A minimalist luxury chatbot interface",
-  generator: "v0.app",
+  generator: "Islom Toxirov",
+  icons: {
+    icon: "/ai.png"
+  }
 }
 
 export default function RootLayout({

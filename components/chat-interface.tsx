@@ -74,32 +74,32 @@ export function ChatInterface() {
   return (
     <div className="flex flex-col h-screen max-w-4xl mx-auto">
       {/* Header */}
-      <div className="flex items-center justify-center py-8 px-6 border-b border-border/50">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-            <Sparkles className="w-5 h-5 text-primary" />
+      <div className="flex items-center justify-center py-4 sm:py-8 px-4 sm:px-6 border-b border-border/50">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center">
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
           </div>
           <div>
-            <h1 className="text-2xl font-semibold text-foreground text-balance">Luxury AI Assistant</h1>
-            <p className="text-sm text-muted-foreground">Sophisticated conversations, refined experience</p>
+            <h1 className="text-lg sm:text-2xl font-semibold text-foreground text-balance">Luxury AI Assistant</h1>
+            <p className="text-xs sm:text-sm text-muted-foreground">Sophisticated conversations, refined experience</p>
           </div>
         </div>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-6 py-8 space-y-6">
+      <div className="flex-1 overflow-y-auto px-3 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-6">
         {messages.map((message) => (
           <div
             key={message.id}
             className={cn("flex w-full", message.role === "user" ? "justify-end" : "justify-start")}
           >
-            <div className={cn("max-w-[80%] md:max-w-[60%]", message.role === "user" ? "order-2" : "order-1")}>
+            <div className={cn("max-w-[90%] sm:max-w-[80%] md:max-w-[60%]", message.role === "user" ? "order-2" : "order-1")}>
               <Card
                 className={cn(
-                  "p-4 shadow-sm border-0 transition-all duration-200",
+                  "p-3 sm:p-4 shadow-sm border-0 transition-all duration-200",
                   message.role === "user"
-                    ? "bg-primary text-primary-foreground ml-4"
-                    : "bg-card text-card-foreground mr-4",
+                    ? "bg-primary text-primary-foreground ml-2 sm:ml-4"
+                    : "bg-card text-card-foreground mr-2 sm:mr-4",
                 )}
               >
                 <p className="text-sm leading-relaxed text-pretty">{message.content}</p>
@@ -116,7 +116,7 @@ export function ChatInterface() {
 
         {isTyping && (
           <div className="flex justify-start">
-            <Card className="bg-card text-card-foreground p-4 mr-4 max-w-[80%] md:max-w-[60%] shadow-sm border-0">
+            <Card className="bg-card text-card-foreground p-3 sm:p-4 mr-2 sm:mr-4 max-w-[90%] sm:max-w-[80%] md:max-w-[60%] shadow-sm border-0">
               <div className="flex items-center gap-2">
                 <div className="flex gap-1">
                   <div className="w-2 h-2 bg-muted-foreground/60 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
@@ -132,28 +132,28 @@ export function ChatInterface() {
       </div>
 
       {/* Input */}
-      <div className="border-t border-border/50 p-6">
-        <div className="flex gap-3 max-w-3xl mx-auto">
+      <div className="border-t border-border/50 p-3 sm:p-6">
+        <div className="flex gap-2 sm:gap-3 max-w-3xl mx-auto">
           <div className="flex-1 relative">
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Type your message..."
-              className="pr-12 h-12 bg-input border-border/50 focus:border-primary/50 focus:ring-primary/20 text-foreground placeholder:text-muted-foreground rounded-xl transition-all duration-200"
+              className="pr-10 sm:pr-12 h-10 sm:h-12 bg-input border-border/50 focus:border-primary/50 focus:ring-primary/20 text-foreground placeholder:text-muted-foreground rounded-xl transition-all duration-200 text-sm sm:text-base"
               disabled={isTyping}
             />
           </div>
           <Button
             onClick={handleSend}
             disabled={!input.trim() || isTyping}
-            className="h-12 px-6 bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl transition-all duration-200 shadow-sm hover:shadow-md disabled:opacity-50"
+            className="h-10 sm:h-12 px-4 sm:px-6 bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl transition-all duration-200 shadow-sm hover:shadow-md disabled:opacity-50"
           >
-            <Send className="w-4 h-4" />
+            <Send className="w-3 h-3 sm:w-4 sm:h-4" />
             <span className="sr-only">Send message</span>
           </Button>
         </div>
-        <p className="text-xs text-muted-foreground text-center mt-3">
+        <p className="text-xs text-muted-foreground text-center mt-2 sm:mt-3 hidden sm:block">
           Press Enter to send • Shift + Enter for new line
         </p>
       </div>
